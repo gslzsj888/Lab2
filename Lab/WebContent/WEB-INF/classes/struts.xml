@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+   "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+  <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+  <constant name="struts.devMode" value="true" />
+  
+  <!-- 所有的Action定义都应该放在package下 -->
+  <package name="default" extends="struts-default">
+    <!-- searchAuthor请求,用bookAction的 searchAuthor处理-->
+    <action name="searchAuthor"
+		class="com.SJlibrary.action.bookAction" 
+        method="searchAuthor">
+        <result name="success">/WEB-INF/content/books.jsp</result>
+        <result name="error">/WEB-INF/content/nobooks.jsp</result>
+    </action>
+    
+    
+    <!-- viewBookDetail请求,用bookAction的 searchBook处理-->
+    <action name="viewBookDetail"
+		class="com.SJlibrary.action.bookAction" 
+        method="searchBook">
+        <result name="success">/WEB-INF/content/bookdetails.jsp</result>
+    </action>
+    
+     <!-- viewBookDetail1请求,用bookAction的 searchBook处理-->
+    <action name="viewBookDetail1"
+		class="com.SJlibrary.action.bookAction" 
+        method="searchBook1">
+        <result name="success">/WEB-INF/content/bookdetails.jsp</result>
+    </action>
+    
+  
+    <!-- addBook请求,用bookAction的 addBook处理-->
+    <action name="addBook"
+		class="com.SJlibrary.action.bookAction" 
+        method="addBook">
+        <result name="success">/WEB-INF/content/addSuccess.jsp</result>
+    </action>
+  
+    <!-- updateBook请求,用bookAction的updateBook处理-->
+    <action name="updateBook"
+		class="com.SJlibrary.action.bookAction" 
+        method="updateBook">
+        <result name="success">/WEB-INF/content/updateSuccess.jsp</result>
+        <result name="error">/WEB-INF/content/nobooks.jsp</result>
+    </action>
+  
+   <!-- deleteBook请求,用bookAction的 deleteBook()处理-->
+  	<action name="deleteBook"
+		class="com.SJlibrary.action.bookAction" 
+        method="deleteBook">
+        <result name="success">/WEB-INF/content/deleteSuccess.jsp</result>
+        <result name="error">/WEB-INF/content/nobooks.jsp</result>
+    </action>
+    
+    <!-- 通用action,*表示处理任意请求 -->
+    <action name="*" >
+      <result name="success">/WEB-INF/content/welcome.jsp</result>
+    </action>
+  </package>
+</struts>
